@@ -12,7 +12,7 @@ public class CacheController {
     private GeoCachingProxy proxy;
 
     @GetMapping("/api/caches/{cacheId}")
-    public String getCache(@PathVariable("cacheId") String cacheId) {
+    public Cache getCache(@PathVariable("cacheId") String cacheId) {
         return proxy.getCacheById(cacheId);
     }
 

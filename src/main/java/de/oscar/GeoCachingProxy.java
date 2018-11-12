@@ -17,10 +17,14 @@ public class GeoCachingProxy {
     @Autowired
     private RemoteWebDriver driver;
 
-    public String getCacheById(String cacheId) {
+    public Cache getCacheById(String cacheId) {
         driver.get("http://coord.info/" + cacheId);
 
-        return driver.findElementById("uxLatLon").getText();
+        String lonLat = driver.findElementById("uxLatLon").getText();
+        String hint = driver.findElementById("ctl00_ContentBody_EncryptionKey").getText();
+        String[] difficulty = driver.findElementByClassName("CacheStarLabels").findElement(By.tagName("img")).getAttribute("src").split("/");
+
+        return new Cache(lonLat, hint, difficulty[difficulty.length - 1]);
     }
 
     @Scheduled(fixedDelay = 1500000)
