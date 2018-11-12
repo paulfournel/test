@@ -24,7 +24,7 @@ public class GeoCachingProxy {
         String hint = driver.findElementById("ctl00_ContentBody_EncryptionKey").getText();
         String[] difficulty = driver.findElementByClassName("CacheStarLabels").findElement(By.tagName("img")).getAttribute("src").split("/");
 
-        return new Cache(lonLat, hint, difficulty[difficulty.length - 1]);
+        return new Cache(lonLat, hint.split("\n")[3], difficulty[difficulty.length - 1]);
     }
 
     @Scheduled(fixedDelay = 1500000)
