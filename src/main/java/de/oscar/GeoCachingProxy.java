@@ -66,7 +66,7 @@ public class GeoCachingProxy {
         String res = "";
         for (int i = 0; i < converted.length(); i++) {
             String c = Character.toString(converted.charAt(i));
-            res += CODE.get(c.toUpperCase()).toLowerCase();
+            res += CODE.getOrDefault(c.toUpperCase(), c).toLowerCase();
         }
         return res;
     }
