@@ -27,16 +27,21 @@ public class GeoCachingProxy {
         String lonLat = driver.findElementById("uxLatLon").getText();
         String hint = decrypt(driver.findElementById("div_hint").getText());
         String user = driver.findElementById("ctl00_ContentBody_mcd1").findElement(By.tagName("a")).getText();
+        String type = getLinkTitle("cacheDetailsTitle");
         String difficulty = getImageName("ctl00_ContentBody_uxLegendScale");
         String terrain = getImageName("ctl00_ContentBody_Localize12");
         String size = getImageName("ctl00_ContentBody_size");
 
-        return new Cache(cacheName, user, lonLat, hint, difficulty, terrain, size);
+        return new Cache(cacheName, user, lonLat, hint, difficulty, terrain, size, type);
     }
 
     private String getImageName(String id) {
         String[] difficulty = driver.findElementById(id).findElement(By.tagName("img")).getAttribute("src").split("/");
         return difficulty[difficulty.length - 1].replace(".gif", "").replace("stars", "").replace("_", ".");
+    }
+
+    private String getLinkTitle(String id) {
+        return driver.findElementByClassName(id).findElement(By.tagName("a")).getAttribute("title");
     }
 
     @Scheduled(fixedDelay = 1500000)
