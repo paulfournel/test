@@ -44,7 +44,7 @@ public class GeoCachingProxy {
         return driver.findElementByClassName(id).findElement(By.tagName("a")).getAttribute("title");
     }
 
-    @Scheduled(fixedDelay = 1500000)
+    @Scheduled(fixedDelay = 15000000)
     private void init() {
         try {
             login();
