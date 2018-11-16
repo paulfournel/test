@@ -52,4 +52,18 @@ public class Cache {
     public String getType() {
         return type;
     }
+
+    @Override
+    public String toString() {
+        return "Cache{" +
+                "lonLat='" + lonLat + '\'' +
+                ", hint='" + hint + '\'' +
+                ", difficulty='" + difficulty + '\'' +
+                ", terrain='" + terrain + '\'' +
+                ", size='" + size + '\'' +
+                ", cacheName='" + cacheName + '\'' +
+                ", user='" + user + '\'' +
+                ", type='" + type + '\'' +
+                '}';
+    }
 }
